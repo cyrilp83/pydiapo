@@ -10,8 +10,6 @@ root.geometry("%dx%d+0+0" % (w, h))
 
 listeimage = []
 j = 0
-
-## l'affichage se fera sur un label
 lbl = Tk.Label(root)
 
 def souris(event):
@@ -23,10 +21,10 @@ lbl.bind("<Button-1>", souris)
 ## chargement de toutes les images dans une liste
 def loadlist():
 	global listeimage
-	for i in glob.glob('./img/*.*'):
+	for i in glob.glob('./samples/*.*'):
 		image = Image.open(i) 
-		hpercent = (h/float(image.size[1]))
-		wsize = int((float(image.size[0]*float(hpercent))))
+		hratio = (h/float(image.size[1]))
+		wsize = int((float(image.size[0]*float(hratio))))
 		image = image.resize((wsize,h))
 		photo = ImageTk.PhotoImage(image) 
 		listeimage.append(photo)
